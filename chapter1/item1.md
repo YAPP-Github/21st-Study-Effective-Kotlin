@@ -1,3 +1,5 @@
+# 아이템 1 : 가변성을 제한하라
+
 ### 왜 가변성을 제한해야 하는가?
 
 - 코틀린의 요소(클래스, 객체, 함수) 중 일부는 **상태**를 가질 수 있음
@@ -15,34 +17,34 @@
 - 읽기 전용 프로퍼티(`val`)
     - 불변을 의미하는 것은 아님
     - `val` 옆에 **상태가 적혀서 초기화**되므로, **코드 실행 예측에 용이함**
-        
-        ![**게터로 정의했을경우 스마트캐스트 불가능 예제**](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a26756f5-5b2a-432f-b0e9-9aaec1534122/Untitled.png)
+       ![Untitled 1](https://user-images.githubusercontent.com/70064912/201721458-e7fba2da-a113-4697-bb90-0ef5910467c8.png)
+
         
         **게터로 정의했을경우 스마트캐스트 불가능 예제**
         
     - `val`에 mutable 객체를 담는다면 내부적으로 변할 수 있는 것에 주의
     
 - 가변 컬렉션, 읽기 전용 컬렉션 구별
-    
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/27e32e06-e682-4f27-8961-71594447572d/Untitled.png)
+    - ![Untitled 2](https://user-images.githubusercontent.com/70064912/201721597-8a9ca0cf-c61a-4b9c-960b-52e53c68a10b.png)
     
     - 코틀린의 컬렉션은 위 의존성을 가지며, **읽기 전용, 읽고 쓰기가 가능한 컬렉션**으로 나뉘어짐
     - **읽기 전용 컬렉션이 내부 값을 변경할 수 없다는 의미는 아님. 인터페이스가 이를 지원하지 않음**
         
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d1fe71ce-2fdc-4953-89a4-29f3ae03a2b0/Untitled.png)
-        
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/94240f7a-942b-4b11-ba81-2f87b3520ba3/Untitled.png)
-        
+       ![Untitled 3](https://user-images.githubusercontent.com/70064912/201721617-c93cea82-1729-40b7-87df-ae3d95a78e29.png)
+
+       ![Untitled 4](https://user-images.githubusercontent.com/70064912/201721629-755d5ce2-3b08-4503-994d-34763f728d47.png)
+
+     
     - `map`은 **내부적으로 `ArrayList`로 연산**되지만, **List로 캐스팅되어 반환**되기 때문에 **읽기 전용 메서드만 사용할 수 있음**
     - 내부적으로 인터페이스를 사용하므로 **플랫폼 고유의 컬렉션**을 사용할 수 있게 됨
     
 - 시스템 해킹(다운캐스팅 금지)
     - **추상화를 무시하는 행위**이며, 안전하지 않고 예측하지 못한 결과를 초래
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cc30a1c8-91c4-49e9-b28a-c20d6c200d2b/Untitled.png)
-    
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/29c83880-a32e-4952-9448-de45ddc0b02e/Untitled.png)
-    
+   ![Untitled 5](https://user-images.githubusercontent.com/70064912/201721649-a80d2149-a20f-4100-9787-e8f4a7c99aee.png)
+
+   ![Untitled 6](https://user-images.githubusercontent.com/70064912/201721678-fa8a6d4f-c72c-4476-9f95-a91aef248721.png)
+  
     - `toMutableList`를 통해 새로운 mutable 컬렉션을 생성하는 방식이 **안전함**
 
 - 데이터 클래스의 `copy`
@@ -60,7 +62,7 @@
     - **상태를 나타내는 mutable 객체를 노출하는 것**은 **돌발적인 수정이 일어날 수 있음**
     - **해결책1** : 방어적 복제
         
-        ![image](https://user-images.githubusercontent.com/70064912/201718989-1a1b9aa2-cf8b-4edf-adee-727dd3ed99b0.png)
+      ![Untitled](https://user-images.githubusercontent.com/70064912/201721707-9251ae35-9187-4176-a581-312b9b8b6d2f.png)
 
         
     - **해결책2** : 읽기 전용 슈퍼타입으로 캐스팅
