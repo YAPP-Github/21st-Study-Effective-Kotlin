@@ -2,18 +2,18 @@
 > &nbsp; 연산자 오버로딩을 사용하면 강력한 도구로 활용할 수 있지만 때로는 중복된 의미로 인해 오용될 가능성도 존재합니다. 
 
 ```kotlin
-	fun Int.factorial(): Int = (1..this).product()
+    fun Int.factorial(): Int = (1..this).product()
     
     fun Iterable<Int>.product(): Int = 
     	fold(1) { acc, i -> acc * i }
         
-	operator fun Int.not() = factorial()
+    operator fun Int.not() = factorial()
 ```
 팩토리얼을 ``! `` 연산자로 나타내기 위해서 not 연산자를 오버로딩하였습니다. 기능 동작을 할지라도 기존 사용자에게는 논리 연산으로 사용될지 새로 정의한 연산자로 사용될지 혼란스럽고 오해의 소지가 있습니다.
 <br>
 
 ```kotlin
-	operator fun Int.times(operation: () -> Unit): () -> Unit =
+    operator fun Int.times(operation: () -> Unit): () -> Unit =
     	{ repeat(this) { operation() } }
         
     val tripledHello = 3 * { print("Hello") }
@@ -24,7 +24,7 @@
 <br>
 
 ```kotlin
-	infix fun Int.timesRepeated(operation: () -> Unit): () -> Unit =
+    infix fun Int.timesRepeated(operation: () -> Unit): () -> Unit =
     	{ repeat(this) { operation() } }
         
     val tripledHello = 3 timesRepeated { print("Hello") }
