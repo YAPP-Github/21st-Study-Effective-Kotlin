@@ -77,13 +77,13 @@ printer가 null이 아닐 경우에만 print 메소드를 호출하는 코드로
   
   	@BeforeEach
   	fun init(){
-  		dao = mockk()
-  		controller = UserController(dao!!)
+  	    dao = mockk()
+  	    controller = UserController(dao!!)
   	}
   
   	@Test
   	fun test(){
-  		controller!!.doSomething()
+  	    controller!!.doSomething()
   	}
   }
 ```
@@ -97,13 +97,13 @@ printer가 null이 아닐 경우에만 print 메소드를 호출하는 코드로
   
   	@BeforeEach
   	fun init(){
-  		dao = mockk()
-  		controller = UserController(dao)
+  	    dao = mockk()
+  	    controller = UserController(dao)
   	}
   
   	@Test
   	fun test(){
-  		controller.doSomething()
+  	    controller.doSomething()
   	}
   }
 ```
