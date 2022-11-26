@@ -10,7 +10,7 @@
 inline fun <reified T> String.readObjectOrNull(): T? {
 	// ...
     if(incorrectSign){
-		return null    
+	return null    
     }
     
     // ...
