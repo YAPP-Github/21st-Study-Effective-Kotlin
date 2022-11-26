@@ -11,21 +11,21 @@
 fun countCharactersInFile(path: String): Int{
 	val reader = BufferedReader(FileReader(path))
 	try{
-  		return reader.lineSequence().sumBy { it.length }
+		return reader.lineSequence().sumBy { it.length }	
 	}finally{
-  		reader.close()
-  	}
+		reader.close()
+	}
 }
 ```
 일반적으로 리소스를 사용하고 닫을 때는 try-catch 블록을 사용하게 됩니다. 하지만 위 코드는 복잡하고 리소스를 닫을 때 IOException이 발생할 수 있는데 해당 예외를 별도로 처리하지 않습니다. 
 <br>
 
 ```kotlin
-	fun countCharactersInFile(path: String): Int{
-  		BufferedReader(FileReader(path)).use { reader ->
-			return reader.lineSequence().sumBy { it.length }
-  		}
-  }
+fun countCharactersInFile(path: String): Int{
+	BufferedReader(FileReader(path)).use { reader ->
+		return reader.lineSequence().sumBy { it.length }
+	}
+}
 ```
 다행히 코틀린에서는 간결하면서도 try-catch에서 처리하지 못한 예외까지 처리해줄 수 있는 ``use`` 메소드를 제공하고 있습니다. ``use`` 메소드는 Closable을 구현하는 모든 객체에서 사용할 수 있습니다.
 
