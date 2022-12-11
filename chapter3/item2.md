@@ -11,7 +11,7 @@
 - 직접 구현 시 실수 가능성 존재
 
 ```java
-	override fun saveCallResult(item: SourceResponse){
+    override fun saveCallResult(item: SourceResponse){
     	var sourceList = ArrayList<SourceEntity>()
         item.sources.forEach{
         	var sourceEntity = SourceEntity()
@@ -28,7 +28,7 @@
 <br>
 
 ```kotlin
-	override fun saveCallResult(item: SourceResponse){
+    override fun saveCallResult(item: SourceResponse){
     	val sourceEntries = item.sources.map(::sourceToEntry)
         db.insertSOurces(sourceEntries)
     }
