@@ -1,6 +1,6 @@
 # 5. 타입 파라미터의 섀도잉을 피하라
 ```kotlin
-	class Forest(val name: String){
+    class Forest(val name: String){
     	fun addTree(name: String){
         	// ...
         }
@@ -10,7 +10,7 @@
 <br>
 
 ```kotlin
-	interface Tree
+    interface Tree
     class Birch: Tree
     class Spruce: Tree
     
