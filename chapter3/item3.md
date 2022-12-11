@@ -2,7 +2,7 @@
 > &nbsp; Kotlin 개발하면서 lateinit, lazy 키워드를 이용한 지연초기화를 사용해본 경험이 있을 것입니다. 지연초기화도 프로퍼티 위임 방법 중 하나로 프로퍼티 초기화 시에 추가적인 행위까지 추출할 수 있어서 권장되는 방법입니다.
 
 ```kotlin
-	val value by lazy { createValue() }
+    val value by lazy { createValue() }
     
     var items: List<Item> by 
     	Delegates.observable(listOf()) { _, _, _ ->
@@ -41,7 +41,7 @@ private val token: String by preferences.bind(TOKEN_KEY)
 
 간단한 프로퍼티 위임을 만들어서 동작 원리 및 활용 방법에 대해 알아보겠습니다. 프로퍼티 사용될 때 간단한 로그를 출력하고 싶다고 하면 getter / setter 를 통해 구현할 수 있습니다.
 ```kotlin
-	var token: String? = null
+    var token: String? = null
     	get(){
         	print("token returned value $field")
             return field
@@ -65,7 +65,7 @@ private val token: String by preferences.bind(TOKEN_KEY)
 <br>
 
 ```kotlin
-	var token: String? by LoggingProperty(null)
+    var token: String? by LoggingProperty(null)
     var attempts: Int by LoggingProperty(0)
     
     private class LoggingProperty<T>(var value: T){
@@ -92,7 +92,7 @@ private val token: String by preferences.bind(TOKEN_KEY)
 <br>
 
 ```kotlin
-	@JvmField
+    @JvmField
     private val 'token$delegate' = 
     	LoggingProperty<String?>(null)
     
