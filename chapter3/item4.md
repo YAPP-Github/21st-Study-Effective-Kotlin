@@ -2,7 +2,7 @@
 > &nbsp; 일반적인 알고리즘을 직접 구현 시에 타입 파라미터를 사용한 Generic function을 구현하는 것이 좋습니다. 
 
 ```kotlin
-	inline fun <T> Iterable<T>.filter(
+    inline fun <T> Iterable<T>.filter(
     	predicate: (T) -> Boolean
     ): List<T>{
     	val destination = ArrayList<T>()
@@ -20,7 +20,7 @@
 ## 제네릭 제한
 타입 파라미터의 중요한 기능 중 하나는 구체적인 타입의 서브타입 또는 슈퍼타입을 사용하도록 타입을 제한할 수 있습니다. 
 ```kotlin
-	fun <T: Comparable<T>> Iterable<T>.sorted(): List<T>{
+    fun <T: Comparable<T>> Iterable<T>.sorted(): List<T>{
     
     }
     
