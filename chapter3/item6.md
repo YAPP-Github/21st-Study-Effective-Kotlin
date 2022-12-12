@@ -7,7 +7,7 @@
 class Cup<T>
 
 fun main(){
-	val anys: Cup<Any> = Cup<Int>()	// Type mismatch
+    val anys: Cup<Any> = Cup<Int>()	// Type mismatch
     val nothings: Cup<Nothing> = Cup<Int>()	// Type mismatch
 }
 ```
@@ -22,7 +22,7 @@ open class Dog
 class Puppy: Dog()
 
 fun main(args: Array<String>){
-	val b: Cup<Dog> = Cup<Puppy>()	// OK
+    val b: Cup<Dog> = Cup<Puppy>()	// OK
     val a: Cup<Puppy> = Cup<Dog>()	// Error
 }	
 ```
@@ -37,7 +37,7 @@ open class Dog
 class Puppy(): Dog()
 
 fun main(args: Array<String>){
-	val b: Cup<Dog> = Cup<Puppy>()	// Error
+    val b: Cup<Dog> = Cup<Puppy>()	// Error
     val a: Cup<Puppy> = Cup<Dog>()	// OK
     
     val anys: Cup<Any> = Cup<Int>()	// Error
@@ -97,7 +97,7 @@ class Puppy: Dog()
 class Hound: Dog()
 
 class Box<out T>{
-	private var value: T? = null
+    private var value: T? = null
     
     // 실제로는 Compile Error
     fun set(value: T){
@@ -121,7 +121,7 @@ box.set(42)		// Error
 
 ```kotlin
 class Box<out T>{
-	private var value: T? = null
+    private var value: T? = null
     // var value: T? = null		// 컴파일 오류
     
     private set(value: T){
@@ -147,8 +147,8 @@ interface Boat
 class Amphibious: Car(), Boat
 
 class Box<in T>(
-	// compile error
-	val value: T
+    // compile error
+    val value: T
 )
 
 val garage: Box<Car> = Box(Car())
@@ -164,7 +164,7 @@ val not: Nothing = noSpot.value
 
 ```kotlin
 class Box<in T>{
-	// var value: T? = null
+    // var value: T? = null
     private var value: T? = null
     
     fun set(value: T){
@@ -208,7 +208,7 @@ data class Hound(val name: String): Dog
 data class Cat(val name: String): Cutie
 
 fun fillWithPuppies(list: MutableList<in Puppy>{
-	list.add(Puppy("Jim"))
+    list.add(Puppy("Jim"))
     list.add(Puppy("Beam"))
 }
 
