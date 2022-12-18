@@ -149,6 +149,8 @@ class Amphibious: Car(), Boat
 class Box<in T>(
     // compile error
     val value: T
+    
+    fun get(): T = value ?: error("Value not set")	// compile error
 )
 
 val garage: Box<Car> = Box(Car())
