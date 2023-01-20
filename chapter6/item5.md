@@ -30,7 +30,7 @@ val name2 = FullName("Marcin","Moskala"
 val name3 = FullName("Maja","Moskala")
 
 name1 == name1 // true
-name2 == name2 // true 데이터가 같기 때문
+name1 == name2 // true 데이터가 같기 때문
 name1 == name3 // false
 
 name1 === name1 // true
@@ -123,7 +123,7 @@ class Complex(
 
 ```kotlin
 Complex(1.0, 0.0).equals(1.0)  // true
-1.0.equlas(Complex(1.0, 0.0)) // false
+1.0.equals(Complex(1.0, 0.0)) // false
 ```
 
 - Double은 Complex와 비교할 수 없기에 대칭적으로 동작하지 않음.
